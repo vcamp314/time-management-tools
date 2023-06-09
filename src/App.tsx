@@ -26,19 +26,12 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1>Vite + React</h1>
+      <Timer elapsedTime={elapsedTime} />
       <div className="card">
         <button onClick={() => setIsStarted(!isStarted)}>
           {isStarted ? 'Pause' : 'Start'}
         </button>
-        <Timer elapsedTime={elapsedTime} />
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }

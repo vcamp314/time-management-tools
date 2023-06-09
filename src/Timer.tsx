@@ -14,7 +14,7 @@ export default ({ elapsedTime}: {elapsedTime: number}) => {
     minutes = minutes % 60;
 
     return (
-    <h2>duration: {`${padTo2Digits(hours)}:${padTo2Digits(minutes)}:${padTo2Digits(seconds)}`}</h2>
+    <h1>{`${padTo2Digits(hours)}:${padTo2Digits(minutes)}:${padTo2Digits(seconds)}`}</h1>
     )
 
 }
