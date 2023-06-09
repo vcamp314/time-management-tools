@@ -1,17 +1,6 @@
-import { useState, useEffect } from 'react'
 
-export default ({ duration }: {duration: number}) => {
+export default ({ elapsedTime}: {elapsedTime: number}) => {
 
-    // todo: maybe refactor to take in elapsedTime as a prop too, to be managed centrally elsewhere
-    const [elapsedTime, setElapsedTime] = useState<number>(duration)
-
-    useEffect(() => {
-        if(elapsedTime){
-            setTimeout(() => {
-                setElapsedTime(elapsedTime - 1000)
-            }, 1000)
-        }
-    }, [elapsedTime])
 
     const padTo2Digits = (timeUnit: number): string => {
         return timeUnit <= 10 ? `0${timeUnit}` : `${timeUnit}`

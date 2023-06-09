@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import Timer from './Timer'
@@ -6,6 +6,16 @@ import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
+  const [elapsedTime, setElapsedTime] = useState<number>(120000)
+  const [isStarted, setIsStarted] = useState<boolean>(true)
+
+  useEffect(() => {
+    if(isStarted && elapsedTime){
+        setTimeout(() => {
+            setElapsedTime(elapsedTime - 1000)
+        }, 1000)
+    }
+}, [elapsedTime])
 
   return (
     <>
@@ -22,7 +32,7 @@ function App() {
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
-        <Timer duration={120*1000} />
+        <Timer elapsedTime={elapsedTime} />
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
