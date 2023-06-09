@@ -5,9 +5,8 @@ import Timer from './Timer'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
   const [elapsedTime, setElapsedTime] = useState<number>(120000)
-  const [isStarted, setIsStarted] = useState<boolean>(true)
+  const [isStarted, setIsStarted] = useState<boolean>(false)
 
   useEffect(() => {
     if(isStarted && elapsedTime){
@@ -15,7 +14,7 @@ function App() {
             setElapsedTime(elapsedTime - 1000)
         }, 1000)
     }
-}, [elapsedTime])
+}, [elapsedTime, isStarted])
 
   return (
     <>
@@ -29,8 +28,8 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+        <button onClick={() => setIsStarted(!isStarted)}>
+          {isStarted ? 'Pause' : 'Start'}
         </button>
         <Timer elapsedTime={elapsedTime} />
         <p>
