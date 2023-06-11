@@ -4,17 +4,27 @@ import viteLogo from '/vite.svg'
 import Timer from './Timer'
 import './App.css'
 
+const defaultDuration = 2*60*1000 // 2 min
+
 function App() {
-  const [elapsedTime, setElapsedTime] = useState<number>(120000)
+  const [elapsedTime, setElapsedTime] = useState<number>(defaultDuration)
   const [isStarted, setIsStarted] = useState<boolean>(false)
+
+  let timeoutId = 0
 
   useEffect(() => {
     if(isStarted && elapsedTime){
-        setTimeout(() => {
+      timeoutId = setTimeout(() => {
             setElapsedTime(elapsedTime - 1000)
         }, 1000)
     }
 }, [elapsedTime, isStarted])
+
+  const resetSession = () => {
+    setIsStarted(false)
+    clearTimeout(timeoutId)
+    setElapsedTime(defaultDuration)
+  }
 
   return (
     <>
@@ -30,6 +40,9 @@ function App() {
       <div className="card">
         <button onClick={() => setIsStarted(!isStarted)}>
           {isStarted ? 'Pause' : 'Start'}
+        </button>
+        <button onClick={resetSession}>
+          Reset
         </button>
       </div>
     </>
