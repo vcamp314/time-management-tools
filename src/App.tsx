@@ -5,25 +5,52 @@ import Timer from './Timer'
 import './App.css'
 
 const defaultDuration = 2*60*1000 // 2 min
+// temporary mock data:
+const sessionStages = [
+  {
+    stageName: 'focussed work',
+    stageDuration: 10*1000
+  },
+  {
+    stageName: 'exercise break',
+    stageDuration: 5*1000
+  },
+  {
+    stageName: 'cleaning/admin tasks',
+    stageDuration: 5*1000
+  }
+]
 
 function App() {
-  const [elapsedTime, setElapsedTime] = useState<number>(defaultDuration)
+  const [currentStageIndex, setCurrentStageIndex] = useState<number>(0)
+  const [elapsedTime, setElapsedTime] = useState<number>(sessionStages[currentStageIndex].stageDuration)
   const [isStarted, setIsStarted] = useState<boolean>(false)
 
   let timeoutId = 0
 
   useEffect(() => {
-    if(isStarted && elapsedTime){
+    if (isStarted && elapsedTime) {
       timeoutId = setTimeout(() => {
             setElapsedTime(elapsedTime - 1000)
         }, 1000)
+    }
+    if (elapsedTime <= 0) {
+      startNextStage()
     }
 }, [elapsedTime, isStarted])
 
   const resetSession = () => {
     setIsStarted(false)
     clearTimeout(timeoutId)
-    setElapsedTime(defaultDuration)
+    setCurrentStageIndex(0)
+    setElapsedTime(sessionStages[0].stageDuration)
+  }
+
+  const startNextStage = () => {
+    if (currentStageIndex >= sessionStages.length - 1) return
+    
+    setElapsedTime(sessionStages[currentStageIndex + 1].stageDuration)
+    setCurrentStageIndex(currentStageIndex + 1)
   }
 
   return (
@@ -36,6 +63,7 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
+      <h2>{sessionStages[currentStageIndex].stageName}</h2>
       <Timer elapsedTime={elapsedTime} />
       <div className="card">
         <button onClick={() => setIsStarted(!isStarted)}>
