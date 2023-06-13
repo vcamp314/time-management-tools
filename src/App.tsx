@@ -8,7 +8,7 @@ const defaultDuration = 2*60*1000 // 2 min
 // temporary mock data:
 const sessionStages = [
   {
-    stageName: 'focussed work',
+    stageName: 'focused work',
     stageDuration: 40*60*1000
   },
   {
