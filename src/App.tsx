@@ -9,15 +9,15 @@ const defaultDuration = 2*60*1000 // 2 min
 const sessionStages = [
   {
     stageName: 'focussed work',
-    stageDuration: 10*1000
+    stageDuration: 40*60*1000
   },
   {
     stageName: 'exercise break',
-    stageDuration: 5*1000
+    stageDuration: 10*60*1000
   },
   {
     stageName: 'cleaning/admin tasks',
-    stageDuration: 5*1000
+    stageDuration: 10*60*1000
   }
 ]
 
