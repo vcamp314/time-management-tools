@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react'
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import Button from '@mui/material/Button'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import Timer from './Timer'
@@ -53,9 +55,15 @@ function App() {
     setCurrentStageIndex(currentStageIndex + 1)
   }
 
+  const darkTheme = createTheme({
+    palette: {
+      mode: 'dark',
+    },
+  });
+
   return (
-    <>
-      <div>
+    <ThemeProvider theme={darkTheme}>
+    <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
@@ -66,14 +74,14 @@ function App() {
       <h2>{sessionStages[currentStageIndex].stageName}</h2>
       <Timer elapsedTime={elapsedTime} />
       <div className="card">
-        <button onClick={() => setIsStarted(!isStarted)}>
+        <Button onClick={() => setIsStarted(!isStarted)}>
           {isStarted ? 'Pause' : 'Start'}
-        </button>
-        <button onClick={resetSession}>
+        </Button>
+        <Button onClick={resetSession}>
           Reset
-        </button>
+        </Button>
       </div>
-    </>
+    </ThemeProvider>
   )
 }
 
