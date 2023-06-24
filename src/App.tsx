@@ -1,5 +1,5 @@
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import TimerSessionManager from './components/TimerSessionManager'
+import TimerSessionManager from './components/organisms/TimerSessionManager'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
