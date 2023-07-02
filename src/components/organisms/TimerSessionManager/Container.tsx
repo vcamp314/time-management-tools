@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react'
 import Presenter from './Presenter'
 
+
 // temporary mock data:
 const sessionStages = [
     {
         stageName: 'focused work',
-        stageDuration: 40 * 60 * 1000
+        stageDuration: 1 * 60 * 1000
     },
     {
         stageName: 'exercise break',
@@ -17,11 +18,14 @@ const sessionStages = [
     }
 ]
 
+const alertAudioPath = '/mixkit-scanning-sci-fi-alarm-905.wav'
+
 const Container = () => {
     const [currentStageIndex, setCurrentStageIndex] = useState<number>(0)
     const [elapsedTime, setElapsedTime] = useState<number>(sessionStages[currentStageIndex].stageDuration)
     const [isStarted, setIsStarted] = useState<boolean>(false)
 
+    let audio = new Audio(alertAudioPath)
     let timeoutId = 0
 
     useEffect(() => {
@@ -31,6 +35,7 @@ const Container = () => {
             }, 1000)
         }
         if (elapsedTime <= 0) {
+            audio.play()
             startNextStage()
         }
     }, [elapsedTime, isStarted])
