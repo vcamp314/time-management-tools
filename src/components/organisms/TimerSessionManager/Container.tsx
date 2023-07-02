@@ -6,7 +6,7 @@ import Presenter from './Presenter'
 const sessionStages = [
     {
         stageName: 'focused work',
-        stageDuration: 1 * 60 * 1000
+        stageDuration: 40 * 60 * 1000
     },
     {
         stageName: 'exercise break',
