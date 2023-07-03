@@ -1,4 +1,4 @@
-import { CssBaseline, ThemeProvider, createTheme } from '@mui/material';
+import { CssBaseline, ThemeProvider } from '@mui/material';
 import { theme } from './theme'
 import TimerSessionManager from './components/organisms/TimerSessionManager'
 // import reactLogo from './assets/react.svg'

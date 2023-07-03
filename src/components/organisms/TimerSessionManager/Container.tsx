@@ -18,7 +18,7 @@ const sessionStages = [
     }
 ]
 
-const alertAudioPath = '/mixkit-scanning-sci-fi-alarm-905.wav'
+const alertAudioPath = 'https://raw.githubusercontent.com/vcamp314/time-management-tools/gh-pages/mixkit-scanning-sci-fi-alarm-905.wav'
 
 const Container = () => {
     const [currentStageIndex, setCurrentStageIndex] = useState<number>(0)
