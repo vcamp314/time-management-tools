@@ -6,19 +6,19 @@ import Presenter from './Presenter'
 const sessionStages = [
     {
         stageName: 'focused work',
-        stageDuration: 40 * 60 * 1000
+        stageDuration: 1 * 60 * 1000
     },
     {
         stageName: 'exercise break',
-        stageDuration: 10 * 60 * 1000
+        stageDuration: 1 * 60 * 1000
     },
     {
         stageName: 'cleaning/admin tasks',
-        stageDuration: 10 * 60 * 1000
+        stageDuration: 1 * 60 * 1000
     }
 ]
 
-const alertAudioPath = 'https://raw.githubusercontent.com/vcamp314/time-management-tools/gh-pages/mixkit-scanning-sci-fi-alarm-905.wav'
+const alertAudioPath = '/mixkit-scanning-sci-fi-alarm-905.wav'
 
 const Container = () => {
     const [currentStageIndex, setCurrentStageIndex] = useState<number>(0)
@@ -36,7 +36,7 @@ const Container = () => {
         }
         if (elapsedTime <= 0) {
             audio.play()
-            startNextStage()
+            audio.loop = true
         }
     }, [elapsedTime, isStarted])
 
@@ -56,10 +56,20 @@ const Container = () => {
 
     //   todo: refactor to improve UX
     const togglePause = () => {
-        console.log("toggled pause")
-        console.log("isStarted before: ", isStarted)
+        if (elapsedTime <= 0) {
+            audio.pause()
+            startNextStage()
+            return
+        }
         setIsStarted(!isStarted)
-        console.log("isStarted after: ", isStarted)
+    }
+
+    const setToggleBtnVerbiage = () => {
+        if (elapsedTime <= 0) {
+            return 'Next session'
+        }
+
+        return isStarted? 'Pause' : 'Start'
     }
 
     return (
@@ -67,7 +77,7 @@ const Container = () => {
             <Presenter 
             stageName={sessionStages[currentStageIndex].stageName} 
             elapsedTime={elapsedTime} 
-            toggleBtnVerbiage={isStarted? 'Pause' : 'Start'} 
+            toggleBtnVerbiage={setToggleBtnVerbiage()} 
             togglePause={togglePause} 
             resetSession={resetSession} />
         </>

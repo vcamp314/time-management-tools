@@ -8,7 +8,7 @@ type AppProps = {
 
   stageName: string
   elapsedTime: number
-  toggleBtnVerbiage: 'Start' | 'Pause'
+  toggleBtnVerbiage: 'Start' | 'Pause' | 'Next session'
   togglePause: () => void
   resetSession: () => void
 
