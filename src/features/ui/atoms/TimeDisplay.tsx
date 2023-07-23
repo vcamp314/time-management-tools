@@ -1,12 +1,12 @@
 
-export default ({ elapsedTime}: {elapsedTime: number}) => {
+export default ({ msTime }: {msTime: number}) => {
 
 
     const padTo2Digits = (timeUnit: number): string => {
         return timeUnit <= 10 ? `0${timeUnit}` : `${timeUnit}`
     }
 
-    let seconds: number = Math.floor(elapsedTime / 1000);
+    let seconds: number = Math.floor(msTime / 1000);
     let minutes: number = Math.floor(seconds / 60);
     const hours: number = Math.floor(minutes / 60);
   
