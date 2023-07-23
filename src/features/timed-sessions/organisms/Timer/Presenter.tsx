@@ -1,7 +1,7 @@
 import Button from '@mui/material/Button'
 import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
-import Timer from '../../atoms/Timer'
+import TimeDisplay from '@features/ui/atoms/TimeDisplay'
 import './styles.css'
 
 type AppProps = {
@@ -31,7 +31,7 @@ const Presenter = ({ stageName, elapsedTime, toggleBtnVerbiage, togglePause, res
           </Grid>
 
           <Grid item xs={12}>
-            <Timer elapsedTime={elapsedTime} />
+            <TimeDisplay msTime={elapsedTime} />
           </Grid>
 
           <Grid item xs={12}>

@@ -1,6 +1,6 @@
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import { theme } from './theme'
-import TimerSessionManager from './components/organisms/TimerSessionManager'
+import Timer from './features/timed-sessions/organisms/Timer'
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
 import './App.css'
@@ -21,7 +21,7 @@ const App = () => {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div> */}
-          <TimerSessionManager />
+          <Timer />
         </main>
       </div>
 
