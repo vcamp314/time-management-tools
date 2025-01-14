@@ -19,7 +19,8 @@
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.13.5",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "time-management-ui-lib": "github:vcamp314/time-management-ui-lib"
   },
   "devDependencies": {
     "@types/react": "^18.0.37",
